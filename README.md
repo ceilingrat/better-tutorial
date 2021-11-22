@@ -3,7 +3,7 @@ This project aims for **an improved approach to tutorials**.
 
 ## docs
 
-Documents found in the `docs` directory of this repo are [hosted here on GitHub Pages](https://ceilingrat.github.io/better-tutorial/).
+Documents found in the `docs` directory of this repo are [hosted here on GitHub Pages](https://ceilingrat.github.io/better-tutorial/index.html).
 
 ## dev
 
