@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>test-1: code animation</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="lib/revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="lib/revealjs/dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="lib/revealjs/plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+      <div class="slides">
+
+
+      <section data-auto-animate>
+        <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+          import React, { useState } from 'react';
+
+          function Example() {
+            const [count, setCount] = useState(0);
+
+            return (
+              ...
+            );
+          }
+        </code></pre>
+      </section>
+      <section data-auto-animate>
+        <pre data-id="code"><code data-line-numbers="1-12|5-10|1-12" class="hljs" data-trim>
+          function Example() {
+            const [count, setCount] = useState(0);
+
+            return (
+              &lt;div&gt;
+                &lt;p&gt;You clicked {count} times&lt;/p&gt;
+                &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+                  Click me
+                &lt;/button&gt;
+              &lt;/div&gt;
+            );
+          }
+        </code></pre>
+      </section>
+      <section data-auto-animate>
+        <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+          function Example() {
+            // A comment!
+            const [count, setCount] = useState(0);
+
+            return (
+              &lt;div&gt;
+                &lt;p&gt;You clicked {count} times&lt;/p&gt;
+                &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+                  Click me
+                &lt;/button&gt;
+              &lt;/div&gt;
+            );
+          }
+        </code></pre>
+      </section>
+
+      </div>
+    </div>
+
+		<script src="lib/revealjs/dist/reveal.js"></script>
+		<script src="lib/revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				center: true,
+				hash: true,
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>test-2: Socket.io tutorial</title>
+    <!--
+      reference to this tutorial from Socket.IO:
+      https://socket.io/get-started/chat/
+      -->
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="lib/revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="lib/revealjs/dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="lib/revealjs/plugin/highlight/monokai.css">
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+      <div class="slides">
+
+      <section data-auto-animate>
+        The Web Framework
+        <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
+          const express = require('express');
+          const app = express();
+          const http = require('http');
+          const server = http.createServer(app);
+
+          app.get('/', (req, res) => {
+            res.send('<h1>Hello world</h1>');
+          });
+
+          server.listen(3000, () => {
+            console.log('listening on *:3000');
+          });
+        </code></pre>
+        https://socket.io/get-started/chat/#the-web-framework
+      </section>
+
+      <section data-auto-animate>
+        Serving HTML
+        <pre data-id="code"><code data-line-numbers="6-8" class="hljs" data-trim>
+          const express = require('express');
+          const app = express();
+          const http = require('http');
+          const server = http.createServer(app);
+
+          app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html');
+          });
+
+          server.listen(3000, () => {
+            console.log('listening on *:3000');
+          });
+        </code></pre>
+        https://socket.io/get-started/chat/#serving-html
+      </section>
+
+      <section data-auto-animate>
+        Integrating Socket.IO part 1
+        <pre data-id="code"><code data-line-numbers="5-6|12-14" class="hljs" data-trim>
+          const express = require('express');
+          const app = express();
+          const http = require('http');
+          const server = http.createServer(app);
+          const { Server } = require("socket.io");
+          const io = new Server(server);
+
+          app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html');
+          });
+
+          io.on('connection', (socket) => {
+            console.log('a user connected');
+          });
+
+          server.listen(3000, () => {
+            console.log('listening on *:3000');
+          });
+        </code></pre>
+        https://socket.io/get-started/chat/#integrating-socketio
+      </section>
+
+      <section data-auto-animate>
+        Integrating Socket.IO part 2
+        <pre data-id="code"><code data-line-numbers="12-17" class="hljs" data-trim>
+          const express = require('express');
+          const app = express();
+          const http = require('http');
+          const server = http.createServer(app);
+          const { Server } = require("socket.io");
+          const io = new Server(server);
+
+          app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html');
+          });
+
+          io.on('connection', (socket) => {
+            console.log('a user connected');
+            socket.on('disconnect', () => {
+              console.log('user disconnected');
+            });
+          });
+
+          server.listen(3000, () => {
+            console.log('listening on *:3000');
+          });
+        </code></pre>
+        https://socket.io/get-started/chat/#integrating-socketio
+      </section>
+
+      <section data-auto-animate>
+        Emitting Events
+        <pre data-id="code"><code data-line-numbers="12-16" class="hljs" data-trim>
+          const express = require('express');
+          const app = express();
+          const http = require('http');
+          const server = http.createServer(app);
+          const { Server } = require("socket.io");
+          const io = new Server(server);
+
+          app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html');
+          });
+
+          io.on('connection', (socket) => {
+            socket.on('chat message', (msg) => {
+              console.log('message: ' + msg);
+            });
+          });
+
+          server.listen(3000, () => {
+            console.log('listening on *:3000');
+          });
+        </code></pre>
+        https://socket.io/get-started/chat/#emitting-events
+      </section>
+
+      <section data-auto-animate>
+        Most recent copy from GitHub
+        <pre data-id="code"><code data-line-numbers="1-4|10-14|16-18" class="hljs" data-trim>
+          const app = require('express')();
+          const http = require('http').Server(app);
+          const io = require('socket.io')(http);
+          const port = process.env.PORT || 3000;
+
+          app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html');
+          });
+
+          io.on('connection', (socket) => {
+            socket.on('chat message', msg => {
+              io.emit('chat message', msg);
+            });
+          });
+
+          http.listen(port, () => {
+            console.log(`Socket.IO server running at http://localhost:${port}/`);
+          });
+        </code></pre>
+        https://github.com/socketio/chat-example/blob/master/index.js
+      </section>
+
+      </div>
+    </div>
+
+		<script src="lib/revealjs/dist/reveal.js"></script>
+		<script src="lib/revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				center: true,
+				hash: true,
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+
+	</body>
+</html>
