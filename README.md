@@ -5,6 +5,9 @@ This project aims for **an improved approach to tutorials**.
 
 Documents found in the `docs` directory of this repo are [hosted here on GitHub Pages](https://ceilingrat.github.io/better-tutorial/index.html).
 
+Looking for slides from the recent mini-talk?   
+[look right here](https://hackmd.io/@ceilingrat/BJgDJ70dK#/)
+
 ## dev
 
 The simplest way to get started hacking is to open this repo using **Repl.it**.   
